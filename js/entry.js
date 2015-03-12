@@ -68,19 +68,39 @@
   var slopeAC = slope(pointA, pointC);
   var slopeBC = slope(pointB, pointC);
 
-  //Display bisector lines from midpoints of AB, AC, BC
-  var slopeBiAB = (-1/slopeAB);
   //Formula for bisector line: -x + y = slope
-  //Solve for x: x = y -m
-  //Solve for y: y = m +x
-  //Implemented:
-  var biABPoint = [midpointAB[1]-slopeBiAB, midpointAB[0]+slopeBiAB];
-  var lineBC = board.create('line', [midpointAB, biABPoint], {
+
+  //Display bisector lines from midpoints of AB, AC, BC
+  //AB:
+  var slopeBiAB = (-1/slopeAB);
+  var biABPoint = [midpointAB[0]+1, midpointAB[1]+slopeBiAB];
+  var biLineAB = board.create('line', [midpointAB, biABPoint], {
     straightFirst: true,
     straightLast: true,
     strokeWidth: 2,
+    strokecolor: 'orange',
   });
-  
+
+  //AC:
+  var slopeBiAC = (-1/slopeAC);
+  var biACPoint = [midpointAC[0]+1, midpointAC[1]+slopeBiAC];
+  var biLineAC = board.create('line', [midpointAC, biACPoint], {
+    straightFirst: true,
+    straightLast: true,
+    strokeWidth: 2,
+    strokecolor: 'orange',
+  });
+
+
+ //BC:
+ var slopeBiBC = (-1/slopeBC);
+ var biBCPoint = [midpointBC[0]+1, midpointBC[0]+slopeBiBC];
+ var biLineBC = board.create('line', [midpointBC, biBCPoint], {
+  straightFirst: true,
+  straightLast: true,
+  strokeWidth: 2,
+  strokecolor: 'orange',
+});
 })();
 
 function midpoint(pointA, pointB) {
