@@ -42,4 +42,29 @@
     straightLast: false, 
     strokeWidth: 2,
   });
+
+  //Step 1: Find midpoint of sides AB, AC, BC
+  var midpointAB = midpoint(pointA, pointB);
+  var midpointAC = midpoint(pointA, pointC);
+  var midpointBC = midpoint(pointB, pointC);
+
+  board.create('point', midpointAB, {
+    name: 'Midpoint AB',
+    strokecolor: 'red',
+  });
+
+  board.create('point', midpointAC, {
+    name: 'Midpoint AC',
+    strokecolor: 'red',
+  });
+
+  board.create('point', midpointBC, {
+    name: 'Midpoint BC',
+    strokecolor: 'red',
+  });
+
 })();
+
+function midpoint(pointA, pointB) {
+  return [(pointA[0] + pointB[0])/2, (pointA[1]+pointB[1])/2];
+}
