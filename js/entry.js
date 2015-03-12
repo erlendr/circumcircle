@@ -63,8 +63,30 @@
     strokecolor: 'red',
   });
 
+  //Step 2: Find the slope of sides AB, AC, BC
+  var slopeAB = slope(pointA, pointB);
+  var slopeAC = slope(pointA, pointC);
+  var slopeBC = slope(pointB, pointC);
+
+  //Display bisector lines from midpoints of AB, AC, BC
+  var slopeBiAB = (-1/slopeAB);
+  //Formula for bisector line: -x + y = slope
+  //Solve for x: x = y -m
+  //Solve for y: y = m +x
+  //Implemented:
+  var biABPoint = [midpointAB[1]-slopeBiAB, midpointAB[0]+slopeBiAB];
+  var lineBC = board.create('line', [midpointAB, biABPoint], {
+    straightFirst: true,
+    straightLast: true,
+    strokeWidth: 2,
+  });
+  
 })();
 
 function midpoint(pointA, pointB) {
   return [(pointA[0] + pointB[0])/2, (pointA[1]+pointB[1])/2];
+}
+
+function slope (pointA, pointB) {
+  return ((pointB[1]-pointA[1])/(pointB[0]-pointA[0]));
 }
