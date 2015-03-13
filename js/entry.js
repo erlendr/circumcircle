@@ -101,6 +101,21 @@
   strokeWidth: 2,
   strokecolor: 'orange',
 });
+
+ var yInterBiAB = -((slopeBiAB * midpointAB[0])-midpointAB[1]);
+ var yInterBiAC = -((slopeBiAC * midpointAC[0])-midpointAC[1]);
+ var yInterBiBC = -((slopeBiBC * midpointBC[0])-midpointBC[1]);
+ console.log(slopeBiAB, slopeBiAC, slopeBiBC);
+ console.log(yInterBiAB, yInterBiAC, yInterBiBC);
+
+ var circumcircleX = (yInterBiBC-yInterBiAB)/(slopeBiAB - slopeBiBC);
+ var circumcircleY = (slopeBiAB * circumcircleX)+yInterBiAB;
+ console.log('circumcircle:', circumcircleX, circumcircleY);
+ board.create('point', [circumcircleX, circumcircleY], {
+  name: '',
+  strokecolor: 'red',
+});
+
 })();
 
 function midpoint(pointA, pointB) {
